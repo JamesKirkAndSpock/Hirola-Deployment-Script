@@ -30,6 +30,13 @@ get_required_variables () {
     export CACHE_PORT="$(get_var "cachePort")"
     export TWILIO_ACCOUNT_SID="$(get_var "twilioSID")"
     export TWILIO_AUTH_TOKEN="$(get_var "twilioTOK")"
+    export EMAIL_HOST="$(get_var "emailHost")"
+    export EMAIL_PORT="$(get_var "emailPort")"
+    export EMAIL_HOST_USER="$(get_var "emailHostUser")"
+    export EMAIL_HOST_PASSWORD="$(get_var "emailHostPass")"
+    export DEFAULT_FROM_EMAIL="$(get_var "defaultEmail")"
+    export SESSION_COOKIE_AGE="$(get_var "sessioniAge")"
+    export SESSION_COOKIE_AGE_KNOWN_DEVICE="$(get_var "sessionAgeKD")"
 }
 
 copy_lets_encrypt_credentials () {

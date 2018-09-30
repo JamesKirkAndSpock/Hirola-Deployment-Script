@@ -39,3 +39,17 @@ variable "cache_ip" {}
 variable "twilio_account_sid" {}
 
 variable "twilio_auth_token" {}
+
+variable "email_host" {}
+
+variable "email_port" {}
+
+variable "email_host_user" {}
+
+variable "email_host_password" {}
+
+variable "default_from_email" {}
+
+variable "session_cookie_age" {}
+
+variable "session_cookie_age_known_device" {}
