@@ -38,7 +38,14 @@ resource "google_compute_instance" "hirola-instance" {
     cacheIP      = "${var.cache_ip}"
     cachePort    = "${var.cache_port}"
     twilioSID    = "${var.twilio_account_sid}"
-    twilioTOK    = "${var.twilio_auth_token}"  
+    twilioTOK    = "${var.twilio_auth_token}"
+    emailHost    = "${var.email_host}"
+    emailPort    = "${var.email_port}"
+    emailHostUser= "${var.email_host_user}"
+    emailHostPass= "${var.email_host_password}"
+    defaultEmail = "${var.default_from_email}"
+    sessionAge   = "${var.session_cookie_age}"
+    sessionAgeKD = "${var.session_cookie_age_known_device}"
   }
 
   service_account {
