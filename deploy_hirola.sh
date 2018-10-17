@@ -61,8 +61,7 @@ install_and_start_repo () {
     python3 ~/Hirola/hirola/manage.py migrate front
     python3 ~/Hirola/hirola/manage.py migrate
     if [[ "${ENV_INSTANCE}" == "devops" ]]; then
-        gsutil cp gs://teke-bucket/application-data/user.json ~/Hirola/hirola/front/fixtures
-        python3 ~/Hirola/hirola/manage.py loaddata user.json
+        gsutil cp gs://teke-bucket/application-data/data.json ~/Hirola/hirola/front/fixtures
         python3 ~/Hirola/hirola/manage.py loaddata data.json
     fi
     python3 ~/Hirola/hirola/manage.py collectstatic --no-input
