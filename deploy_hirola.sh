@@ -35,7 +35,7 @@ get_required_variables () {
     export EMAIL_HOST_USER="$(get_var "emailHostUser")"
     export EMAIL_HOST_PASSWORD="$(get_var "emailHostPass")"
     export DEFAULT_FROM_EMAIL="$(get_var "defaultEmail")"
-    export SESSION_COOKIE_AGE="$(get_var "sessioniAge")"
+    export SESSION_COOKIE_AGE="$(get_var "sessionAge")"
     export SESSION_COOKIE_AGE_KNOWN_DEVICE="$(get_var "sessionAgeKD")"
 }
 
