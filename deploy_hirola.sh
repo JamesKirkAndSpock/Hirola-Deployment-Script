@@ -41,8 +41,8 @@ get_required_variables () {
 
 copy_lets_encrypt_credentials () {
     sudo mkdir -p /etc/letsencrypt/renewal-hooks/deploy 
-    sudo gsutil -m rsync -d -r gs://teke-bucket/letsencrypt/letsencrypt-"${ENV_INSTANCE}" /etc/letsencrypt
-    sudo gsutil -m rsync -d -r gs://teke-bucket/nginx-configurations/"${ENV_INSTANCE}" /etc/nginx/conf.d
+    sudo gsutil -m rsync -d -r gs://"${GS_BUCKET_NAME}"/letsencrypt/letsencrypt-"${ENV_INSTANCE}" /etc/letsencrypt
+    sudo gsutil -m rsync -d -r gs://"${GS_BUCKET_NAME}"/nginx-configurations/"${ENV_INSTANCE}" /etc/nginx/conf.d
     cd /etc/letsencrypt
     sudo mkdir renewal-hooks/post renewal-hooks/pre
     sudo chmod 700 accounts archive keys live accounts/acme-v02.api.letsencrypt.org 
