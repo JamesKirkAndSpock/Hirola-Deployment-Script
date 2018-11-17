@@ -37,12 +37,13 @@ get_required_variables () {
     export DEFAULT_FROM_EMAIL="$(get_var "defaultEmail")"
     export SESSION_COOKIE_AGE="$(get_var "sessionAge")"
     export SESSION_COOKIE_AGE_KNOWN_DEVICE="$(get_var "sessionAgeKD")"
+    export SECRET_GS_BUCKET_NAME="$(get_var "secretGsBucketName")"
 }
 
 copy_lets_encrypt_credentials () {
     sudo mkdir -p /etc/letsencrypt/renewal-hooks/deploy 
-    sudo gsutil -m rsync -d -r gs://"${GS_BUCKET_NAME}"/letsencrypt/letsencrypt-"${ENV_INSTANCE}" /etc/letsencrypt
-    sudo gsutil -m rsync -d -r gs://"${GS_BUCKET_NAME}"/nginx-configurations/"${ENV_INSTANCE}" /etc/nginx/conf.d
+    sudo gsutil -m rsync -d -r gs://"${SECRET_GS_BUCKET_NAME}"/letsencrypt/letsencrypt-"${ENV_INSTANCE}" /etc/letsencrypt
+    sudo gsutil -m rsync -d -r gs://"${SECRET_GS_BUCKET_NAME}"/nginx-configurations/"${ENV_INSTANCE}" /etc/nginx/conf.d
     cd /etc/letsencrypt
     sudo mkdir renewal-hooks/post renewal-hooks/pre
     sudo chmod 700 accounts archive keys live accounts/acme-v02.api.letsencrypt.org 
