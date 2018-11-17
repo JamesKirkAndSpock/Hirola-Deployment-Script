@@ -46,6 +46,7 @@ resource "google_compute_instance" "hirola-instance" {
     defaultEmail = "${var.default_from_email}"
     sessionAge   = "${var.session_cookie_age}"
     sessionAgeKD = "${var.session_cookie_age_known_device}"
+    secretGsBucketName = "${var.secret_gs_bucket_name}"
   }
 
   service_account {

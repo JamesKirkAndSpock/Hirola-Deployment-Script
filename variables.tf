@@ -53,3 +53,5 @@ variable "default_from_email" {}
 variable "session_cookie_age" {}
 
 variable "session_cookie_age_known_device" {}
+
+variable "secret_gs_bucket_name" {}
