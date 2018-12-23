@@ -53,17 +53,15 @@ copy_lets_encrypt_credentials () {
     sudo chmod 755 csr renewal archive/"${HOST}" live/"${HOST}"
     sudo chmod 600 keys/0000_key-certbot.pem
     sudo chmod -R 755 renewal-hooks
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/cert1.pem live/devops.crispuskamau.com/cert.pem
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/chain1.pem live/devops.crispuskamau.com/chain.pem
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/fullchain1.pem live/devops.crispuskamau.com/fullchain.pem
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/privkey1.pem live/devops.crispuskamau.com/privkey.pem
+    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/cert2.pem live/devops.crispuskamau.com/cert.pem
+    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/chain2.pem live/devops.crispuskamau.com/chain.pem
+    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/fullchain2.pem live/devops.crispuskamau.com/fullchain.pem
+    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/privkey2.pem live/devops.crispuskamau.com/privkey.pem
 }
 install_and_start_repo () {
     cd ~
-    virtualenv --python=python3 hi-venv
-    source ~/hi-venv/bin/activate
     git clone -b ${BRANCH} https://github.com/JamesKirkAndSpock/Hirola
-    pip install -r ~/Hirola/hirola/requirements.txt
+    pip3 install -r ~/Hirola/hirola/requirements.txt
     python3 ~/Hirola/hirola/manage.py makemigrations front
     python3 ~/Hirola/hirola/manage.py migrate front
     python3 ~/Hirola/hirola/manage.py migrate
