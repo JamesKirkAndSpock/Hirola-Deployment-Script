@@ -60,10 +60,8 @@ copy_lets_encrypt_credentials () {
 }
 install_and_start_repo () {
     cd ~
-    virtualenv --python=python3 hi-venv
-    source ~/hi-venv/bin/activate
     git clone -b ${BRANCH} https://github.com/JamesKirkAndSpock/Hirola
-    pip install -r ~/Hirola/hirola/requirements.txt
+    pip3 install -r ~/Hirola/hirola/requirements.txt
     python3 ~/Hirola/hirola/manage.py makemigrations front
     python3 ~/Hirola/hirola/manage.py migrate front
     python3 ~/Hirola/hirola/manage.py migrate
