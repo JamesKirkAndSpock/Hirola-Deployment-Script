@@ -38,6 +38,8 @@ get_required_variables () {
     export SESSION_COOKIE_AGE="$(get_var "sessionAge")"
     export SESSION_COOKIE_AGE_KNOWN_DEVICE="$(get_var "sessionAgeKD")"
     export SECRET_GS_BUCKET_NAME="$(get_var "secretGsBucketName")"
+    export CHANGE_EMAIL_EXPIRY_MINUTES_TIME="$(get_var "changeEmailTime")"
+    export INACTIVE_EMAIL_EXPIRY_MINUTES_TIME="$(get_var "inactiveEmailTime")"
 }
 
 copy_lets_encrypt_credentials () {

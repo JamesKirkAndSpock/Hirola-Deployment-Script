@@ -55,3 +55,7 @@ variable "session_cookie_age" {}
 variable "session_cookie_age_known_device" {}
 
 variable "secret_gs_bucket_name" {}
+
+variable "change_email_expiry_minutes_time" {}
+
+variable "inactive_email_expiry_minutes_time" {}
