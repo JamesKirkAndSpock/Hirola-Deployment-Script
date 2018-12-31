@@ -53,10 +53,10 @@ copy_lets_encrypt_credentials () {
     sudo chmod 755 csr renewal archive/"${HOST}" live/"${HOST}"
     sudo chmod 600 keys/0000_key-certbot.pem
     sudo chmod -R 755 renewal-hooks
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/cert2.pem live/devops.crispuskamau.com/cert.pem
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/chain2.pem live/devops.crispuskamau.com/chain.pem
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/fullchain2.pem live/devops.crispuskamau.com/fullchain.pem
-    sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/privkey2.pem live/devops.crispuskamau.com/privkey.pem
+    sudo ln -s /etc/letsencrypt/archive/"${HOST}"/cert2.pem live/"${HOST}"/cert.pem
+    sudo ln -s /etc/letsencrypt/archive/"${HOST}"/chain2.pem live/"${HOST}"/chain.pem
+    sudo ln -s /etc/letsencrypt/archive/"${HOST}"/fullchain2.pem live/"${HOST}"/fullchain.pem
+    sudo ln -s /etc/letsencrypt/archive/"${HOST}"/privkey2.pem live/"${HOST}"/privkey.pem
 }
 
 copy_cronjobs () {
