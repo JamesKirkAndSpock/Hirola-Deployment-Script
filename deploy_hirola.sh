@@ -58,6 +58,12 @@ copy_lets_encrypt_credentials () {
     sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/fullchain2.pem live/devops.crispuskamau.com/fullchain.pem
     sudo ln -s /etc/letsencrypt/archive/devops.crispuskamau.com/privkey2.pem live/devops.crispuskamau.com/privkey.pem
 }
+
+copy_cronjobs () {
+    sudo gsutil cp gs://"${SECRET_GS_BUCKET_NAME}"/cronjobs/daily/hirola.sh /etc/cron.daily/hirola
+    sudo chmod 0511 /etc/cron.daily/hirola
+}
+
 install_and_start_repo () {
     cd ~
     git clone -b ${BRANCH} https://github.com/JamesKirkAndSpock/Hirola
@@ -76,6 +82,7 @@ install_and_start_repo () {
 main () {
     get_required_variables
     copy_lets_encrypt_credentials
+    copy_cronjobs
     install_and_start_repo
 }
 
