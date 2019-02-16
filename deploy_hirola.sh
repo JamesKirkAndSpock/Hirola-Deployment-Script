@@ -64,6 +64,12 @@ copy_cronjobs () {
     sudo chmod 0511 /etc/cron.daily/hirola
 }
 
+copy_supervisord_conf () {
+    sudo gsutil cp gs://"${SECRET_GS_BUCKET_NAME}"/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+    sudo gsutil cp gs://"${SECRET_GS_BUCKET_NAME}"/start-script/start.sh /usr/local/bin/start-app
+    sudo chmod +x /usr/local/bin/start-app
+}
+
 install_and_start_repo () {
     cd ~
     git clone -b ${BRANCH} https://github.com/JamesKirkAndSpock/Hirola
@@ -74,8 +80,7 @@ install_and_start_repo () {
     python3 ~/Hirola/hirola/manage.py collectstatic --no-input
     sudo systemctl start memcached
     sudo nginx -s reload
-    cd ~/Hirola/hirola/
-    nohup gunicorn -b 0.0.0.0:8000 --error-logfile /var/log/hirola-error.log hirola.wsgi &
+    sudo systemctl restart supervisor
 }
 
 
@@ -83,6 +88,7 @@ main () {
     get_required_variables
     copy_lets_encrypt_credentials
     copy_cronjobs
+    copy_supervisord_conf
     install_and_start_repo
 }
 
