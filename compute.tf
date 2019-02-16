@@ -51,6 +51,11 @@ resource "google_compute_instance" "hirola-instance" {
     inactiveEmailTime = "${var.inactive_email_expiry_minutes_time}"
   }
 
+  provisioner "file" {
+    source      = "conf/supervisord.conf"
+    destination = "/etc/supervisor/supervisord.conf"
+  }
+
   service_account {
     scopes = ["storage-full"]
   }

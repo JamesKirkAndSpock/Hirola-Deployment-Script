@@ -72,10 +72,11 @@ install_and_start_repo () {
     python3 ~/Hirola/hirola/manage.py migrate front
     python3 ~/Hirola/hirola/manage.py migrate
     python3 ~/Hirola/hirola/manage.py collectstatic --no-input
-    sudo systemctl start memcached
-    sudo nginx -s reload
-    cd ~/Hirola/hirola/
-    nohup gunicorn -b 0.0.0.0:8000 --error-logfile /var/log/hirola-error.log hirola.wsgi &
+    # sudo systemctl start memcached
+    # sudo nginx -s reload
+    # cd ~/Hirola/hirola/
+    # nohup gunicorn -b 0.0.0.0:8000 --error-logfile /var/log/hirola-error.log hirola.wsgi &
+    sudo supervisord -c /etc/supervisor/supervisord.conf
 }
 
 
