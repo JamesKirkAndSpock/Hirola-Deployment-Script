@@ -68,6 +68,12 @@ copy_supervisord_conf () {
     sudo chmod +x /usr/local/bin/start-app
 }
 
+remove_precambrian_pip() {
+    sudo apt-get remove python3-pip -y
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo python3 get-pip.py
+}
+
 install_and_start_repo () {
     cd ~
     git clone -b ${BRANCH} https://github.com/JamesKirkAndSpock/Hirola
@@ -87,6 +93,7 @@ main () {
     copy_lets_encrypt_credentials
     copy_cronjobs
     copy_supervisord_conf
+    remove_precambrian_pip
     install_and_start_repo
 }
 
